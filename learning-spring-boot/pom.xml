@@ -3,16 +3,36 @@
   <groupId>com.dafobe</groupId>
   <artifactId>learning-spring-boot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <name>learning-spring-boot</name>
   <description>Playing with Spring Boot</description>
   
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.1.9.RELEASE</version>
+    <version>1.2.0.RELEASE</version>
   </parent>
   
+  <developers>
+	<developer>
+	    <name>David F.B.</name>
+	    <email>dafobe@gmail.com</email>	    
+	</developer>
+  </developers>
+    
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+    <build-date>${maven.build.timestamp}</build-date>
+    
+	<java.version>1.7</java.version>
+	<bootstrap.version>3.1.1</bootstrap.version>
+	<angularjs.version>1.2.12</angularjs.version>
+	
+	<maven.compiler.source>${java.version}</maven.compiler.source>
+	<maven.compiler.target>${java.version}</maven.compiler.target>
+
     <start-class>com.dafobe.learning.springboot.Application</start-class>
   </properties>
     
@@ -21,18 +41,49 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- tag::actuator[] -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <!-- end::actuator[] -->
-        <!-- tag::logging[] -->
+        
+        <!-- Viewer system template -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<!-- Database : embedded H2 database -->
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
+		</dependency>
+        <!-- Logging libraries -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-        <!-- end::logging[] -->
+        <!-- add support to jackson for serializate/deserializate -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+		</dependency>
+        <!--  add support for device detection -->
+		<dependency>
+			<groupId>org.springframework.mobile</groupId>
+			<artifactId>spring-mobile-device</artifactId>
+		</dependency>
+		
+		<!-- adds an spring-security and a simple properties "basic" configuration 
+				nessary for actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+        <!-- Server monitoring Utils -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        
     </dependencies>
 
     <build>
