@@ -27,8 +27,8 @@
     <build-date>${maven.build.timestamp}</build-date>
     
 	<java.version>1.7</java.version>
-	<bootstrap.version>3.1.1</bootstrap.version>
-	<angularjs.version>1.2.12</angularjs.version>
+	<h2.version>1.4.182</h2.version>
+	<usertype.version>3.2.0.GA</usertype.version>
 	
 	<maven.compiler.source>${java.version}</maven.compiler.source>
 	<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -42,12 +42,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         
-        <!-- Viewer system template -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+		<!-- ======= Database ====== -->
+		<!-- _______________________ -->
 		<!-- Database : embedded H2 database -->
+		<!-- <dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${oracle.version}</version>
+		</dependency> -->
 		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
@@ -56,16 +58,26 @@
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-jpa</artifactId>
 		</dependency>
-        <!-- Logging libraries -->
+        <!-- ======= Logging libraries ====== -->
+        <!-- ________________________________ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
+        <!-- ====== Serialization/ serialization Utils ===== -->
         <!-- add support to jackson for serializate/deserializate -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-joda</artifactId>
 		</dependency>
+        <!-- add jadira classes (no boot management) : Usertype can persist both JSR 310 and Joda Time based dates and times to a database using Hibernate -->
+		<dependency>
+			<groupId>org.jadira.usertype</groupId>
+			<artifactId>usertype.core</artifactId>
+			<version>${usertype.version}</version>
+		</dependency>
+		<!-- ====== Other Utils ===== -->
+		<!-- ________________________ -->
         <!--  add support for device detection -->
 		<dependency>
 			<groupId>org.springframework.mobile</groupId>
@@ -73,17 +85,30 @@
 		</dependency>
 		
 		<!-- adds an spring-security and a simple properties "basic" configuration 
-				nessary for actuator -->
-		<dependency>
+				required by actuator -->
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency> -->
+        
         <!-- Server monitoring Utils -->
-        <dependency>
+        <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        </dependency> -->
         
+        <!-- ====== Testing ===== -->
+        <!-- ____________________ -->
+        <!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency> -->
     </dependencies>
 
     <build>
