@@ -29,6 +29,7 @@
 	<java.version>1.7</java.version>
 	<h2.version>1.4.182</h2.version>
 	<usertype.version>3.2.0.GA</usertype.version>
+	<oracle.version>11.2.0.2.0</oracle.version>
 	
 	<maven.compiler.source>${java.version}</maven.compiler.source>
 	<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -41,30 +42,35 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- =========== FrontEnd Libraries ========== -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
         
 		<!-- ======= Database ====== -->
-		<!-- _______________________ -->
 		<!-- Database : embedded H2 database -->
-		<!-- <dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${oracle.version}</version>
-		</dependency> -->
 		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${oracle.version}</version>
+			<scope>production</scope>
+		</dependency>
+		
+		<dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-jpa</artifactId>
 		</dependency>
         <!-- ======= Logging libraries ====== -->
-        <!-- ________________________________ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-        <!-- ====== Serialization/ serialization Utils ===== -->
+        <!-- ====== Other Utils ===== -->
         <!-- add support to jackson for serializate/deserializate -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
@@ -76,8 +82,6 @@
 			<artifactId>usertype.core</artifactId>
 			<version>${usertype.version}</version>
 		</dependency>
-		<!-- ====== Other Utils ===== -->
-		<!-- ________________________ -->
         <!--  add support for device detection -->
 		<dependency>
 			<groupId>org.springframework.mobile</groupId>
@@ -98,17 +102,13 @@
         </dependency> -->
         
         <!-- ====== Testing ===== -->
-        <!-- ____________________ -->
-        <!-- <dependency>
+        <!-- 
+        <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>test</scope>
-		</dependency> -->
+		 -->
     </dependencies>
 
     <build>
@@ -116,6 +116,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <jvmArguments>
+                        -agentpath:/home/adminuser/Documents/DFB/jrebel/lib/libjrebel64.so
+                    </jvmArguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>

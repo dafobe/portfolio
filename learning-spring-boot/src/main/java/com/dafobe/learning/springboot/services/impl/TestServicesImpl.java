@@ -33,4 +33,12 @@ public class TestServicesImpl implements TestServices {
 		LOGGER.info("getItems() ends. resp");
 		return resp;
 	}
+	
+	@Override
+	public
+	Item getItem(Integer id){
+		LOGGER.info("getItem({})",id);
+
+		return itemRepository.findOne(id);
+	}
 }

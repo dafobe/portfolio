@@ -8,4 +8,6 @@ public interface TestServices {
 
 	List<Item> getItems();
 
+	Item getItem(Integer id);
+
 }
